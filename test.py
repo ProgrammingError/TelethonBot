@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 
-from client import config, tgbot
+from decouple import config
+from TelethonBot import BotzHub
 
 app = FastAPI(debug=True)
 
@@ -14,7 +15,7 @@ async def test(request: Request):
 
 @app.get("/omk")
 async def fuck(request: Request):
-    om = await tgbot.send_message(-1001237141420, "TEST")
+    om = await BotzHub.send_message(-1001237141420, "TEST")
     print(om)
     return {"msg": "MC"}
 
